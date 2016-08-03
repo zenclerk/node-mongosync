@@ -87,8 +87,10 @@
               $natural: 1
             },
             tailable: true,
-            awaitdata: true,
-            timeout: false
+            awaitData: true,
+            timeout: false,
+            noCursorTimeout: true,
+            oplogReplay: true
           }, function(err, cursor) {
             if (err) {
               return done(err);
@@ -183,14 +185,16 @@
     };
 
     OplogReader.prototype.start = function(ts, eachCallback, bulkCallback, done) {
-      return this.run(ts, eachCallback, bulkCallback, function(err) {
-        clearInterval(this.tailOplogInterval);
-        this.tailOplogInterval = null;
-        clearInterval(this.bulkInterval);
-        this.bulkInterval = null;
-        this.close();
-        return done(err);
-      });
+      return this.run(ts, eachCallback, bulkCallback, (function(_this) {
+        return function(err) {
+          clearInterval(_this.tailOplogInterval);
+          _this.tailOplogInterval = null;
+          clearInterval(_this.bulkInterval);
+          _this.bulkInterval = null;
+          _this.close();
+          return done(err);
+        };
+      })(this));
     };
 
     OplogReader.prototype.run = function(ts, eachCallback, bulkCallback, done) {
