@@ -1,0 +1,41 @@
+{
+  "author": {
+    "name": "hiroaki.kubota@mail.crumb.jp"
+  },
+  "bugs": {
+    "url": "https://github.com/crumbjp/momonger/issues"
+  },
+  "dependencies": {
+    "async": "^1.5.0",
+    "mongodb": "^2.1.16",
+    "opts": "^1.2.2",
+    "underscore": "^1.8.3"
+  },
+  "description": "Alpha version",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "c0e81992dc443caf8d4d4d39a8ff8844405ca1ee",
+    "tarball": "https://registry.npmjs.org/node-mongosync/-/node-mongosync-0.1.1.tgz"
+  },
+  "homepage": "https://github.com/crumbjp/momonger#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "email": "hiroaki.kubota@mail.crumb.jp",
+      "name": "crumbjp"
+    }
+  ],
+  "name": "node-mongosync",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/crumbjp/momonger.git"
+  },
+  "scripts": {
+    "build": "rm -rf built && coffee -o 'built' -c src && cp README.md package.json built/"
+  },
+  "version": "0.1.1"
+}
